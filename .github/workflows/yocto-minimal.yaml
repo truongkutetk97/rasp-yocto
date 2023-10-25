@@ -16,6 +16,7 @@ jobs:
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
     - name: Create build folder
       run: |
+        echo "GITHUB_ACTION_PATH=$(pwd)" >> "$GITHUB_ENV"
         echo $GITHUB_ACTION_PATH
         mkdir -p $GITHUB_ACTION_PATH/portable/yocto/kirkstone
         mkdir $GITHUB_ACTION_PATH/portable/yocto/kirkstone/builds
