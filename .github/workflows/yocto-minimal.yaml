@@ -13,7 +13,7 @@ jobs:
     - run: echo "yocto minimal"
     - uses: actions/checkout@v3
     - name: Fetch dependency
-      run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
+      run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat tree
     - name: Set build env
       run: echo "CUR_DIR=$(pwd)" >> "$GITHUB_ENV"
     - name: Create build folder
@@ -29,7 +29,11 @@ jobs:
     - name: Clone meta-openembedded
       run: git clone -b kirkstone git://git.openembedded.org/meta-openembedded
     - name: Set build env
-      run: source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
+      run: |
+        pwd
+        ls -al $CUR_DIR/
+        tree -L 2 $CUR_DIR/portable/yocto/kirkstone/
+        source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
     - name: Install zstd (dependency)
       run: sudo apt install -y zstd liblz4-tool chrpath diffstat
     - name: Update meta layer
