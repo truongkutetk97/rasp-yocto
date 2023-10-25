@@ -32,6 +32,7 @@ jobs:
     - name: debug-checkoutput
       run: |
         pwd
+        echo $cur_dir
         ls -al $cur_dir/portable/yocto/kirkstone/poky/
     - name: Set build env
       run: source $cur_dir/portable/yocto/kirkstone/poky/oe-init-build-env $cur_dir/portable/yocto/kirkstone/builds/rpi
