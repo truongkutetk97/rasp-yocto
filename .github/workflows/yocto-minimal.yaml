@@ -16,10 +16,12 @@ jobs:
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
     - name: Create build folder
       run: |
-        mkdir -p ~/portable/yocto/kirkstone
-        mkdir ~/portable/yocto/kirkstone/builds
-        mkdir ~/portable/yocto/kirkstone/downloads
-        cd ~/portable/yocto/kirkstone
+        export cur_dir=$(pwd)
+        echo $cur_dir
+        mkdir -p $cur_dir/portable/yocto/kirkstone
+        mkdir $cur_dir/portable/yocto/kirkstone/builds
+        mkdir $cur_dir/portable/yocto/kirkstone/downloads
+        cd $cur_dir/portable/yocto/kirkstone
     - name: Clone yocto
       run: git clone -b kirkstone git://git.yoctoproject.org/poky.git
     - name: Clone meta-rasp
@@ -30,9 +32,9 @@ jobs:
     - name: debug-checkoutput
       run: |
         pwd
-        ls -al ~/portable/yocto/kirkstone/poky/
+        ls -al $cur_dir/portable/yocto/kirkstone/poky/
     - name: Set build env
-      run: source ~/portable/yocto/kirkstone/poky/oe-init-build-env ~/portable/yocto/kirkstone/builds/rpi
+      run: source $cur_dir/portable/yocto/kirkstone/poky/oe-init-build-env $cur_dir/portable/yocto/kirkstone/builds/rpi
     - name: Install zstd (dependency)
       run: sudo apt install -y zstd liblz4-tool chrpath diffstat
     - name: Update meta layer
@@ -46,11 +48,11 @@ jobs:
          	/portable/yocto/kirkstone/meta-raspberrypi 
     - name: Update machine name to raspberrypi4-64
       run: |
-          sed -i '/MACHINE/d' ~/portable/yocto/kirkstone/builds/rpi/conf/local.conf
-          sed -i '1i\MACHINE = "raspberrypi4-64"' ~/portable/yocto/kirkstone/builds/rpi/conf/local.conf
-          export DL_DIR="~/portable/yocto/kirkstone/downloads"
+          sed -i '/MACHINE/d' $cur_dir/portable/yocto/kirkstone/builds/rpi/conf/local.conf
+          sed -i '1i\MACHINE = "raspberrypi4-64"' $cur_dir/portable/yocto/kirkstone/builds/rpi/conf/local.conf
+          export DL_DIR="$cur_dir/portable/yocto/kirkstone/downloads"
     - name: Build minimal image
       run: bitbake core-image-minimal
     - name: Check image output
-      run: ls -al ~/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi3/core-image-minimal*
+      run: ls -al $cur_dir/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi3/core-image-minimal*
 
