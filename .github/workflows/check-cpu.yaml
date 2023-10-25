@@ -1,0 +1,17 @@
+name: check-cpu
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check Runner Specs
+      run: |
+        echo "Operating System: $RUNNER_OS"
+        echo "CPU Cores: $NUMBER_OF_PROCESSORS"
+        echo "CPU Architecture: $(uname -m)"
+        free -m  # This command shows RAM information on Linux runners
