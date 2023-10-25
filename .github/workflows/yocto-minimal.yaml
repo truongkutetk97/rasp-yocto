@@ -5,8 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-env:
-      CUR_DIR: "/"
+
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -17,7 +16,8 @@ jobs:
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
     - name: Create build folder
       run: |
-        export CUR_DIR=$(pwd)
+        ::set-env name=CUR_DIR::$(pwd)
+        # export CUR_DIR=$(pwd)
         echo $CUR_DIR
         mkdir -p $CUR_DIR/portable/yocto/kirkstone
         mkdir $CUR_DIR/portable/yocto/kirkstone/builds
