@@ -14,9 +14,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Fetch dependency
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
+    - run: echo "CUR_DIR=$(pwd)" >> "$GITHUB_ENV"
     - name: Create build folder
       run: |
-        echo "CUR_DIR=$(pwd)" >> "$GITHUB_ENV"
         pwd
         ls -al ~
         echo $CUR_DIR
