@@ -14,12 +14,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Fetch dependency
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
-    - run: echo "CUR_DIR=$(pwd)" >> "$GITHUB_ENV"
+    - name: Set build env
+      run: echo "CUR_DIR=$(pwd)" >> "$GITHUB_ENV"
     - name: Create build folder
       run: |
-        pwd
-        ls -al ~
-        echo $CUR_DIR
         mkdir -p $CUR_DIR/portable/yocto/kirkstone
         mkdir $CUR_DIR/portable/yocto/kirkstone/builds
         mkdir $CUR_DIR/portable/yocto/kirkstone/downloads
@@ -30,12 +28,6 @@ jobs:
       run: git clone -b kirkstone https://github.com/agherzan/meta-raspberrypi.git
     - name: Clone meta-openembedded
       run: git clone -b kirkstone git://git.openembedded.org/meta-openembedded
-
-    - name: debug-checkoutput
-      run: |
-        pwd
-        echo $CUR_DIR
-        ls -al $CUR_DIR/portable/yocto/kirkstone/poky/
     - name: Set build env
       run: source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
     - name: Install zstd (dependency)
