@@ -16,13 +16,11 @@ jobs:
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
     - name: Create build folder
       run: |
-        ::set-env name=CUR_DIR::$(pwd)
-        # export CUR_DIR=$(pwd)
-        echo $CUR_DIR
-        mkdir -p $CUR_DIR/portable/yocto/kirkstone
-        mkdir $CUR_DIR/portable/yocto/kirkstone/builds
-        mkdir $CUR_DIR/portable/yocto/kirkstone/downloads
-        cd $CUR_DIR/portable/yocto/kirkstone
+        echo $GITHUB_ACTION_PATH
+        mkdir -p $GITHUB_ACTION_PATH/portable/yocto/kirkstone
+        mkdir $GITHUB_ACTION_PATH/portable/yocto/kirkstone/builds
+        mkdir $GITHUB_ACTION_PATH/portable/yocto/kirkstone/downloads
+        cd $GITHUB_ACTION_PATH/portable/yocto/kirkstone
     - name: Clone yocto
       run: git clone -b kirkstone git://git.yoctoproject.org/poky.git
     - name: Clone meta-rasp
@@ -33,10 +31,10 @@ jobs:
     - name: debug-checkoutput
       run: |
         pwd
-        echo $CUR_DIR
-        ls -al $CUR_DIR/portable/yocto/kirkstone/poky/
+        echo $GITHUB_ACTION_PATH
+        ls -al $GITHUB_ACTION_PATH/portable/yocto/kirkstone/poky/
     - name: Set build env
-      run: source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
+      run: source $GITHUB_ACTION_PATH/portable/yocto/kirkstone/poky/oe-init-build-env $GITHUB_ACTION_PATH/portable/yocto/kirkstone/builds/rpi
     - name: Install zstd (dependency)
       run: sudo apt install -y zstd liblz4-tool chrpath diffstat
     - name: Update meta layer
@@ -50,11 +48,11 @@ jobs:
          	/portable/yocto/kirkstone/meta-raspberrypi 
     - name: Update machine name to raspberrypi4-64
       run: |
-          sed -i '/MACHINE/d' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
-          sed -i '1i\MACHINE = "raspberrypi4-64"' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
-          export DL_DIR="$CUR_DIR/portable/yocto/kirkstone/downloads"
+          sed -i '/MACHINE/d' $GITHUB_ACTION_PATH/portable/yocto/kirkstone/builds/rpi/conf/local.conf
+          sed -i '1i\MACHINE = "raspberrypi4-64"' $GITHUB_ACTION_PATH/portable/yocto/kirkstone/builds/rpi/conf/local.conf
+          export DL_DIR="$GITHUB_ACTION_PATH/portable/yocto/kirkstone/downloads"
     - name: Build minimal image
       run: bitbake core-image-minimal
     - name: Check image output
-      run: ls -al $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi3/core-image-minimal*
+      run: ls -al $GITHUB_ACTION_PATH/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi3/core-image-minimal*
 
