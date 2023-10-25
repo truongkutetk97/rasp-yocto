@@ -32,6 +32,7 @@ jobs:
       run: |
         pwd
         ls -al $CUR_DIR/
+        tree -L 2 $CUR_DIR/
         tree -L 2 $CUR_DIR/portable/yocto/kirkstone/
         source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
     - name: Install zstd (dependency)
