@@ -32,10 +32,11 @@ jobs:
         source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
         bitbake-layers -h
         bitbake-layers add-layer \
-         	/portable/yocto/kirkstone/meta-openembedded/meta-multimedia \
-         	/portable/yocto/kirkstone/meta-openembedded/meta-networking \
-         	/portable/yocto/kirkstone/meta-openembedded/meta-python \
-         	/portable/yocto/kirkstone/meta-raspberrypi 
+         	$CUR_DIR/portable/yocto/kirkstone/meta-openembedded/meta-oe \
+         	$CUR_DIR/portable/yocto/kirkstone/meta-openembedded/meta-multimedia \
+         	$CUR_DIR/portable/yocto/kirkstone/meta-openembedded/meta-networking \
+         	$CUR_DIR/portable/yocto/kirkstone/meta-openembedded/meta-python \
+         	$CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi 
           sed -i '/MACHINE/d' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
           sed -i '1i\MACHINE = "raspberrypi4-64"' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
           export DL_DIR="$CUR_DIR/portable/yocto/kirkstone/downloads"
