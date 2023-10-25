@@ -46,6 +46,6 @@ jobs:
           export DL_DIR="~/portable/yocto/kirkstone/downloads"
     - name: Build minimal image
       run: bitbake core-image-minimal
-    - name: Check image output:
+    - name: Check image output
       run: ls -al ~/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi3/core-image-minimal*
 
