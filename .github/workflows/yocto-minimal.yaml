@@ -16,10 +16,10 @@ jobs:
       run: sudo apt install build-essential chrpath gawk git bmap-tools texinfo diffstat
     - name: Create build folder
       run: |
-        mkdir -p /portable/yocto/kirkstone
-        mkdir /portable/yocto/kirkstone/builds
-        mkdir /portable/yocto/kirkstone/downloads
-        cd /portable/yocto/kirkstone
+        mkdir -p ~/portable/yocto/kirkstone
+        mkdir ~/portable/yocto/kirkstone/builds
+        mkdir ~/portable/yocto/kirkstone/downloads
+        cd ~/portable/yocto/kirkstone
     - name: Clone yocto
       run: git clone -b kirkstone git://git.yoctoproject.org/poky.git
       
