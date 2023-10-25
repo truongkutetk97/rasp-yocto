@@ -32,7 +32,6 @@ jobs:
         source $CUR_DIR/portable/yocto/kirkstone/poky/oe-init-build-env $CUR_DIR/portable/yocto/kirkstone/builds/rpi
         bitbake-layers -h
         bitbake-layers add-layer \
-        	/portable/yocto/kirkstone/meta-openembedded/meta-oe \
          	/portable/yocto/kirkstone/meta-openembedded/meta-multimedia \
          	/portable/yocto/kirkstone/meta-openembedded/meta-networking \
          	/portable/yocto/kirkstone/meta-openembedded/meta-python \
