@@ -17,6 +17,8 @@ jobs:
     - name: Create build folder
       run: |
         echo "CUR_DIR=$(pwd)" >> "$GITHUB_ENV"
+        pwd
+        ls -al ~
         echo $CUR_DIR
         mkdir -p $CUR_DIR/portable/yocto/kirkstone
         mkdir $CUR_DIR/portable/yocto/kirkstone/builds
