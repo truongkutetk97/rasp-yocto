@@ -28,7 +28,9 @@ jobs:
       run: git clone -b kirkstone git://git.openembedded.org/meta-openembedded
 
     - name: debug-checkoutput
-      run: ls -al ~/portable/yocto/kirkstone/poky/
+      run: |
+        pwd
+        ls -al ~/portable/yocto/kirkstone/poky/
     - name: Set build env
       run: source ~/portable/yocto/kirkstone/poky/oe-init-build-env ~/portable/yocto/kirkstone/builds/rpi
     - name: Install zstd (dependency)
