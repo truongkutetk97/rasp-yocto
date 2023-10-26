@@ -58,8 +58,6 @@ jobs:
           bitbake core-image-minimal
     - name: Check image output
       run: |
-        tree -L 2 $CUR_DIR
-        tree -L 2 $CUR_DIR/portable/yocto/kirkstone
-        tree -L 2 $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/
-        ls -al $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi3/core-image-minimal*
+        tree -L 2 $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/
+        ls -al $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberry*/core-image-minimal*
 
