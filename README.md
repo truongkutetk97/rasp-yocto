@@ -14,6 +14,7 @@ meta-kali
 
 ## Usage
 git clone https://github.com/truongkutetk97/rasp-yocto.git
+
 cd rasp-yocto; chmod 777 build.sh
 ./build.sh
 
