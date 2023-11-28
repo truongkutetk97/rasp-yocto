@@ -1,0 +1,44 @@
+diff --git a/recipes-scanners/checksecurity/checksecurity_2.0.15.bb b/recipes-scanners/checksecurity/checksecurity_2.0.15.bb
+index e053a15..ec8544f 100644
+--- a/recipes-scanners/checksecurity/checksecurity_2.0.15.bb
++++ b/recipes-scanners/checksecurity/checksecurity_2.0.15.bb
+@@ -4,7 +4,7 @@ SECTION = "security"
+ LICENSE = "GPL-2.0-only"
+ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
+ 
+-SRC_URI = "http://ftp.de.debian.org/debian/pool/main/c/checksecurity/checksecurity_${PV}.tar.gz \
++SRC_URI = "http://mirrors.mit.edu/raspbian/raspbian/pool/main/c/checksecurity/checksecurity_${PV}.tar.gz \
+            file://setuid-log-folder.patch \
+            file://check-setuid-use-more-portable-find-args.patch"
+ 
+diff --git a/recipes-security/aircrack-ng/aircrack-ng_1.6.bb b/recipes-security/aircrack-ng/aircrack-ng_1.7.bb
+similarity index 88%
+rename from recipes-security/aircrack-ng/aircrack-ng_1.6.bb
+rename to recipes-security/aircrack-ng/aircrack-ng_1.7.bb
+index d3722c0..ed24758 100644
+--- a/recipes-security/aircrack-ng/aircrack-ng_1.6.bb
++++ b/recipes-security/aircrack-ng/aircrack-ng_1.7.bb
+@@ -9,8 +9,8 @@ DEPENDS = "libnl openssl sqlite3 libpcre libpcap"
+ 
+ SRC_URI = "http://download.aircrack-ng.org/${BP}.tar.gz"
+ 
+-SRC_URI[md5sum] = "22ddc85549b51ed0da0931d01ef215e5"
+-SRC_URI[sha256sum] = "4f0bfd486efc6ea7229f7fbc54340ff8b2094a0d73e9f617e0a39f878999a247"
++SRC_URI[md5sum] = "a918ea7146f91d8c799fb770c38f4bec"
++SRC_URI[sha256sum] = "05a704e3c8f7792a17315080a21214a4448fd2452c1b0dd5226a3a55f90b58c3"
+ 
+ inherit autotools-brokensep pkgconfig
+ 
+diff --git a/recipes-security/isic/isic_0.07.bb b/recipes-security/isic/isic_0.07.bb
+index 28153e3..536739d 100644
+--- a/recipes-security/isic/isic_0.07.bb
++++ b/recipes-security/isic/isic_0.07.bb
+@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=d41d8cd98f00b204e9800998ecf8427e"
+ DEPENDS = "libnet"
+ PARALLEL_MAKE = ""
+ 
+-SRC_URI = "http://prdownloads.sourceforge.net/isic/${BPN}-${PV}.tgz \
++SRC_URI = "http://udomain.dl.sourceforge.net/project/isic/isic/ISIC%20v${PV}/isic-${PV}.tgz \
+     file://configure_fix.patch \
+     file://isic-0.07-netinet.patch \
+     file://isic-0.07-make.patch \
