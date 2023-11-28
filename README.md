@@ -10,7 +10,19 @@
 - meta-openembedded/meta-gnome
 - meta-openembedded/meta-xfce
 - meta-security
-- meta-kali
+- meta-kali (?)
+
+## IMAGE_INSTALL:
+packagegroup-core-buildessential
+packagegroup-core-security
+python3
+aircrack-ng
+docker?
+curl?
+iptables?
+zip?
+tshark?
+tcpdump?
 
 ## Usage
 git clone https://github.com/truongkutetk97/rasp-yocto.git
