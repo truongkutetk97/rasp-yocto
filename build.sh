@@ -13,6 +13,7 @@ git clone -b kirkstone git://git.yoctoproject.org/poky.git $CUR_DIR/portable/yoc
 git clone -b kirkstone https://github.com/agherzan/meta-raspberrypi.git $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi
 git clone -b kirkstone git://git.openembedded.org/meta-openembedded $CUR_DIR/portable/yocto/kirkstone/meta-openembedded
 git clone -b nilrt/master/kirkstone https://github.com/ni/meta-security.git $CUR_DIR/portable/yocto/kirkstone/meta-security
+git clone -b kirkstone https://github.com/lgirdk/meta-virtualization.git $CUR_DIR/portable/yocto/kirkstone/meta-virtualization
 
 echo "##### create custom layer"
 bitbake-layers create-layer $CUR_DIR/portable/yocto/kirkstone/meta-jonas
@@ -32,6 +33,8 @@ bitbake-layers add-layer \
     $CUR_DIR/portable/yocto/kirkstone/meta-security \
     $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi 
 bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-jonas
+bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-openembedded/meta-filesystems
+bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-virtualization
 
 echo "##### update local.conf for rpi4-64"
 sed -i '/MACHINE/d' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
@@ -46,7 +49,7 @@ sed -i '1i\INIT_MANAGER = "systemd"' $CUR_DIR/portable/yocto/kirkstone/builds/rp
 
 #enable custom package
 sed -i '/IMAGE_INSTALL/d' $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi/conf/machine/include/rpi-base.inc
-sed -i '1i\IMAGE_INSTALL:append = "packagegroup-core-buildessential packagegroup-core-security python3 aircrack-ng"' $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi/conf/machine/include/rpi-base.inc
+sed -i '1i\IMAGE_INSTALL:append = "packagegroup-core-buildessential packagegroup-core-security packagegroup-docker iptables curl tcpdump net-tools python3 aircrack-ng"' $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi/conf/machine/include/rpi-base.inc
 
 #remove psplash
 sed -i '/IMAGE_FEATURES/d' $CUR_DIR/portable/yocto/kirkstone/poky/meta/recipes-core/images/core-image-base.bb
