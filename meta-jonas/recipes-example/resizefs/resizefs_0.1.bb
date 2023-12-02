@@ -8,8 +8,9 @@ LICENSE = "CLOSED"
 SRC_URI = "file://resizefs.service \
            file://resizerootfs \
            "
+inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "resizefs.service"
+SYSTEMD_SERVICE:${PN} = "resizefs.service"
 
 do_install() {
     install -d ${D}${systemd_system_unitdir}

@@ -23,9 +23,7 @@ fi
 #flock $root_part sfdisk -f $root_part -N $root_part_num <<EOF
 #,+
 #EOF
-#parted -s $rootdev resizepart $root_part_nr 100%
-/usr/local/bin/growpart -N $rootdev $root_part_nr
-/usr/local/bin/growpart $rootdev $root_part_nr
+parted -s $rootdev resizepart $root_part_nr 100%
 
 sleep 5
 udevadm settle

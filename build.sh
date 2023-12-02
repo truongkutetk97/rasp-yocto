@@ -15,6 +15,9 @@ git clone -b kirkstone git://git.openembedded.org/meta-openembedded $CUR_DIR/por
 git clone -b nilrt/master/kirkstone https://github.com/ni/meta-security.git $CUR_DIR/portable/yocto/kirkstone/meta-security
 git clone -b kirkstone https://github.com/lgirdk/meta-virtualization.git $CUR_DIR/portable/yocto/kirkstone/meta-virtualization
 
+#patch meta-security
+git apply --unsafe-paths $CUR_DIR/patch/meta-security-0001.patch --directory=$CUR_DIR/portable/yocto/kirkstone/meta-security
+
 echo "##### create custom layer"
 bitbake-layers create-layer $CUR_DIR/portable/yocto/kirkstone/meta-jonas
 cp -r $CUR_DIR/meta-jonas/* $CUR_DIR/portable/yocto/kirkstone/meta-jonas
@@ -34,9 +37,9 @@ bitbake-layers add-layer \
     $CUR_DIR/portable/yocto/kirkstone/meta-security \
     $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi 
 
-bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-jonas
 bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-openembedded/meta-filesystems
 bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-virtualization
+bitbake-layers add-layer $CUR_DIR/portable/yocto/kirkstone/meta-jonas
 
 echo "##### update local.conf for rpi4-64"
 sed -i '/MACHINE/d' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
@@ -56,15 +59,13 @@ sed -i '1i\IMAGE_INSTALL:append = "packagegroup-core-buildessential packagegroup
 #remove psplash
 sed -i '/IMAGE_FEATURES/d' $CUR_DIR/portable/yocto/kirkstone/poky/meta/recipes-core/images/core-image-base.bb
 
-#patch meta-security
-git apply --unsafe-paths $CUR_DIR/patch/meta-security-0001.patch --directory=$CUR_DIR/portable/yocto/kirkstone/meta-security
 
 echo "##### start build sequence"
 bitbake core-image-base
 
-echo "#### compress the output image"
-cd $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi4-64
-zip core-image-base-rpi4-64-$(date '+%y%m%d-%H%M')-rootfs-sdimg.zip  core-image-base-raspberrypi4-64-*.rootfs.rpi-sdimg
+# echo "#### compress the output image"
+# cd $CUR_DIR/portable/yocto/kirkstone/builds/rpi/tmp/deploy/images/raspberrypi4-64
+# zip core-image-base-rpi4-64-$(date '+%y%m%d-%H%M')-rootfs-sdimg.zip  core-image-base-raspberrypi4-64-*.rootfs.rpi-sdimg
 
 # rm core-image-base-rpi4-64-rootfs-sdimg.zip
 # zip core-image-base-rpi4-64-rootfs-sdimg.zip  core-image-base-raspberrypi4-64-*.rootfs.rpi-sdimg
@@ -79,3 +80,4 @@ zip core-image-base-rpi4-64-$(date '+%y%m%d-%H%M')-rootfs-sdimg.zip  core-image-
 # touch meta-jonas/recipes-tool/resizefs/resizefs_0.1.bb
 
 # bitbake-layers remove-layer $CUR_DIR/portable/yocto/kirkstone/meta-jonas
+
