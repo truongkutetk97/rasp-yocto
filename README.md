@@ -20,11 +20,9 @@
 
 ## Todo
     enable systemd network config
-    enable fs auto grow first boot https://manpages.debian.org/testing/systemd/systemd-growfs.8.en.html 
     enable sudo
     enable apt apt-get
     enable user management
-    enable xrandr cmd (for xrandr -s 11 to adjust resolution)
 
 
 ## IMAGE_INSTALL:
@@ -37,6 +35,9 @@
     curl
     tcpdump
     net-tools
+    xrandr
+    resizerootfs
+
 
 
 ## package list
