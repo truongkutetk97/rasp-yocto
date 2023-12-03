@@ -9,35 +9,46 @@
 - meta-openembedded/meta-webserver
 - meta-openembedded/meta-gnome
 - meta-openembedded/meta-xfce
+- meta-openembedded/meta-filesystems
 - meta-security
-- meta-kali (?)
+- meta-virtualization
+
+## Usage
+    git clone https://github.com/truongkutetk97/rasp-yocto.git
+    cd rasp-yocto; chmod 777 build.sh
+    ./build.sh
+
+## Todo
+    enable systemd network config
+    enable sudo
+    enable apt apt-get
+    enable user management
+    custom user/image name/release note
+    config apt to fetch from which repo
 
 ## IMAGE_INSTALL:
     packagegroup-core-buildessential
     packagegroup-core-security
     python3
     aircrack-ng
-
-## Usage
-git clone https://github.com/truongkutetk97/rasp-yocto.git
-
-cd rasp-yocto; chmod 777 build.sh
-
-./build.sh
-
-## Todo
-- enable systemd network config
-- enable meta-kali
-
-## package list
     docker
     iptables
     curl
     tcpdump
     net-tools
+    xrandr
+    resizerootfs
+
+
+
+## package list
+    OpenSSH
+    OpenSSL
+    Hping3
+    tshark
     Nmap
+    sqlmap
     John the Ripper
-    Aircrack-ng
     SQLMap
     Maltego
     Nikto
@@ -57,8 +68,6 @@ cd rasp-yocto; chmod 777 build.sh
     Autopsy
     Binwalk
     Snort
-    OpenSSH
-    OpenSSL
     GnuPG (GNU Privacy Guard)
     AIDE (Advanced Intrusion Detection Environment)
     Netcat
@@ -83,7 +92,6 @@ cd rasp-yocto; chmod 777 build.sh
     SpiderFoot
     TheHarvester
     dnsenum
-    sqlmap
     OWASP ZAP (Zed Attack Proxy)
     DirBuster
     Vega
@@ -96,7 +104,6 @@ cd rasp-yocto; chmod 777 build.sh
     Recon-ng
     ExploitDB
     Ghidra
-    tshark
     Crunch
     Beef Framework
     Certainly! Here are some additional tools and packages commonly found in Kali Linux:
@@ -127,7 +134,6 @@ cd rasp-yocto; chmod 777 build.sh
     Xplico
     TestDisk
     Nexpose
-    hping3
     OSSEC
     GnuPG
     Nmap Scripting Engine (NSE)
@@ -137,7 +143,6 @@ cd rasp-yocto; chmod 777 build.sh
     Dradis
     Wfuzz
     Pupy
-    Hping3
     Socat
     steghide
     OutGuess
