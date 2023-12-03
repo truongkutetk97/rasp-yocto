@@ -20,11 +20,9 @@
 
 ## Todo
     enable systemd network config
-    enable sudo
-    enable apt apt-get
     enable user management
-    custom user/image name/release note
-    config apt to fetch from which repo
+    install sshd
+    install tree, vim, git, ufw, zip, python-is-python3
 
 ## IMAGE_INSTALL:
     packagegroup-core-buildessential
