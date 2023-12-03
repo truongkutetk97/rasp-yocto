@@ -59,6 +59,12 @@ sed -i '1i\IMAGE_INSTALL:append = "packagegroup-core-buildessential packagegroup
 #remove psplash
 sed -i '/IMAGE_FEATURES/d' $CUR_DIR/portable/yocto/kirkstone/poky/meta/recipes-core/images/core-image-base.bb
 
+#enable packagemanager
+sed -i '1i\IMAGE_FEATURES += "package-management"' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
+
+#install apt
+sed -i '/PACKAGE_CLASSES/d' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
+sed -i '1i\PACKAGE_CLASSES ?= "package_deb"' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/conf/local.conf
 
 echo "##### start build sequence"
 bitbake core-image-base

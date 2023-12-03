@@ -23,7 +23,8 @@
     enable sudo
     enable apt apt-get
     enable user management
-
+    custom user/image name/release note
+    config apt to fetch from which repo
 
 ## IMAGE_INSTALL:
     packagegroup-core-buildessential
