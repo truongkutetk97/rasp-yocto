@@ -19,10 +19,11 @@
     ./build.sh
 
 ## Todo
-    enable systemd network config
-    enable user management
+    config systemd-networkd for wifi
+    config user/group
+    config password ssh
     install sshd
-    install tree, vim, git, ufw, zip, python-is-python3
+    enable uboot log when booting
 
 ## IMAGE_INSTALL:
     packagegroup-core-buildessential
@@ -36,6 +37,9 @@
     net-tools
     xrandr
     resizerootfs
+    tree, vim, git, ufw, zip
+    u-boot
+
 
 
 
