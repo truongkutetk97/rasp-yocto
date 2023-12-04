@@ -19,12 +19,11 @@
     ./build.sh
 
 ## Todo
-    enable systemd network config
-    enable sudo
-    enable apt apt-get
-    enable user management
-    custom user/image name/release note
-    config apt to fetch from which repo
+    config systemd-networkd for wifi
+    config user/group
+    config password ssh
+    install sshd
+    enable uboot log when booting
 
 ## IMAGE_INSTALL:
     packagegroup-core-buildessential
@@ -38,6 +37,9 @@
     net-tools
     xrandr
     resizerootfs
+    tree, vim, git, ufw, zip
+    u-boot
+
 
 
 
