@@ -59,7 +59,7 @@ sed -i '1i\DISABLE_SPLASH = "1"' $CUR_DIR/portable/yocto/kirkstone/builds/rpi/co
 
 #enable custom package
 sed -i '/IMAGE_INSTALL/d' $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi/conf/machine/include/rpi-base.inc
-sed -i '1i\IMAGE_INSTALL:append = "packagegroup-core-buildessential packagegroup-core-security packagegroup-docker iptables curl tcpdump net-tools python3 aircrack-ng gptfdisk parted util-linux e2fsprogs-resize2fs xrandr resizefs vim tree git ufw libubootenv"' $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi/conf/machine/include/rpi-base.inc
+sed -i '1i\IMAGE_INSTALL:append = "packagegroup-core-buildessential packagegroup-core-security packagegroup-docker iptables curl tcpdump net-tools python3 aircrack-ng gptfdisk parted util-linux e2fsprogs-resize2fs xrandr resizefs vim tree git ufw libubootenv openssh"' $CUR_DIR/portable/yocto/kirkstone/meta-raspberrypi/conf/machine/include/rpi-base.inc
 
 #remove psplash
 sed -i '/IMAGE_FEATURES/d' $CUR_DIR/portable/yocto/kirkstone/poky/meta/recipes-core/images/core-image-base.bb

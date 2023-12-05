@@ -19,11 +19,11 @@
     ./build.sh
 
 ## Todo
-    config systemd-networkd for wifi
     config user/group
-    config password ssh
-    install sshd
+    config ssh key
     enable uboot log when booting
+    enable wifi driver at monitor mode
+    enable ps to show full process
 
 ## IMAGE_INSTALL:
     packagegroup-core-buildessential
@@ -39,12 +39,10 @@
     resizerootfs
     tree, vim, git, ufw, zip
     u-boot
-
-
-
+    wpa-supplicant
+    openssh
 
 ## package list
-    OpenSSH
     OpenSSL
     Hping3
     tshark
